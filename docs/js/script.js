@@ -35,6 +35,9 @@
 
             return true;
         });
+        setTimeout(() => {
+            loader.parentElement.remove();
+        }, 3000);
     }
 
     const getAll = () => {
@@ -57,12 +60,12 @@
                     $humedad.textContent = `${json.main.humidity} %`;
                     $viento.textContent = `${json.wind.speed} m/s`;
 
-                    let regex = new RegExp('^(..n)$');
+                    /* let regex = new RegExp('^(..n)$');
                     if(regex.test(json.weather[0].icon)){
                         $principal.classList.add('principal--noche');
                     }else{
                         $principal.classList.remove('principal--noche')
-                    }
+                    } */
 
                 }
                 catch (error) {
@@ -85,7 +88,7 @@
             const mostrarError = (error) => {
                 switch (error.code) {
                     case error.PERMISSION_DENIED:
-                        alert('Permiso denegado por el usuario'); 
+                        alert('Permiso denegado por el usuario, revise sus configuraciones y permita el acceso a su ubicación'); 
                         break;
                     case error.POSITION_UNAVAILABLE:
                         alert('Posición no disponible');
@@ -111,6 +114,22 @@
     }
 
     d.addEventListener('DOMContentLoaded', getAll);
+
+
+
+    const loader = d.querySelector('.loader-container');
+    loader.classList.add('loader--animacion');
+        /* setTimeout(() => { */
+            
+            /* setTimeout(() => {
+                loader.parentElement.remove();
+            }, 5000);
+        }, 1000);
+ */
+    /* d.addEventListener('DOMContentLoaded', ()=> {
+        getAll;
+        
+    }); */
 
     d.addEventListener('submit', e => {
         if(e.target.matches('.search')){
