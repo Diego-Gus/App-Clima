@@ -20,9 +20,12 @@ html{
     font-size: 1rem;
 }
 
-body{
+header, body{ 
     position: relative;
-    width: 100vw;
+    width: 100vw; 
+}
+
+body{
     overflow-x: hidden;
 }
 
